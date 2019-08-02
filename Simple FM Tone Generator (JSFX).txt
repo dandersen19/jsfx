@@ -1,0 +1,32 @@
+// License: LGPL - http://www.gnu.org/licenses/lgpl.html
+
+desc: Simple FM Tone Generator
+//tags: frequency modulation synthesis
+//author: Drake Andersen
+
+slider1:440<0.1,10000,0.1>Carrier Frequency (Hz)
+slider2:2<0.1,100,0.1>Harmonicity Ratio
+slider3:1<0,50,0.01> Modulation Index
+slider4:-20<-120,0,1>Output (dB)
+
+@slider
+vol1=2^(slider4/6);
+freqCarrier=slider1;
+freqMod=slider1*slider2;
+modIndex=slider3;
+
+@sample
+adj1 = (2.0*$pi*(freqCarrier+(toneMod*modIndex*freqMod)))/srate;
+adj2 = 2.0*$pi*freqMod/srate;
+
+toneCarrier = cos(pos1);
+toneMod = cos(pos2);
+
+spl0 = vol1*toneCarrier;
+spl1 = vol1*toneCarrier;
+
+pos1 += adj1;
+(pos1 >= 2.0*$pi) ? pos1 -= 2.0*$pi;
+
+pos2 += adj2;
+(pos2 >= 2.0*$pi) ? pos2 -= 2.0*$pi;

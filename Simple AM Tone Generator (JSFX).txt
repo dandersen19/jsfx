@@ -1,0 +1,34 @@
+// License: LGPL - http://www.gnu.org/licenses/lgpl.html
+
+desc: Simple AM Tone Generator
+//tags: amplitude modulation synthesis
+//author: Drake Andersen
+
+slider1:440<0.1,10000,0.1>Carrier Frequency (Hz)
+slider2:660<0.1,10000,0.1>Modulating Frequency (Hz)
+slider3:1<0,1,0.01> Depth
+slider4:-20<-120,0,1>Output (dB)
+
+@slider
+  vol1=2^(slider4/6);
+  vol2=slider3;
+  dcOffset=1-vol2;
+  
+  adj1 = 2.0*$pi*slider1/srate;
+  adj2 = 2.0*$pi*slider2/srate;
+
+@sample
+  
+  tone1 = cos(pos1);
+  tone2 = cos(pos2);
+
+tone2 = vol2*tone2+dcOffset;
+
+spl0 = vol1*tone1*tone2;
+spl1 = vol1*tone1*tone2;
+
+pos1 += adj1;
+(pos1 >= 2.0*$pi) ? pos1 -= 2.0*$pi;
+
+pos2 += adj2;
+(pos2 >= 2.0*$pi) ? pos2 -= 2.0*$pi;

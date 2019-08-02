@@ -1,0 +1,150 @@
+// License: GPL - http://www.gnu.org/licenses/gpl-3.0.html
+
+desc: Simple Additive Synth
+//tags: sine generator synthesis
+//author: Drake Andersen
+
+slider1:440<20,10000,0.1>Fundamental Frequency (Hz)
+slider2:-36<-120,0,1>F1 Volume (dB)
+slider3:-120<-120,0,1>F2 Volume (dB)
+slider4:-120<-120,0,1>F3 Volume (dB)
+slider5:-120<-120,0,1>F4 Volume (dB)
+slider6:-120<-120,0,1>F5 Volume (dB)
+slider7:-120<-120,0,1>F6 Volume (dB)
+slider8:-120<-120,0,1>F7 Volume (dB)
+slider9:-120<-120,0,1>F8 Volume (dB)
+slider10:-120<-120,0,1>F9 Volume (dB)
+slider11:-120<-120,0,1>F10 Volume (dB)
+slider12:-120<-120,0,1>F11 Volume (dB)
+slider13:-120<-120,0,1>F12 Volume (dB)
+slider14:-120<-120,0,1>F13 Volume (dB)
+slider15:-120<-120,0,1>F14 Volume (dB)
+slider16:-120<-120,0,1>F15 Volume (dB)
+slider17:-120<-120,0,1>F16 Volume (dB)
+
+in_pin:left input
+in_pin:right input
+out_pin:left output
+out_pin:right output
+
+@slider
+  vol1=2 ^ (slider2/6);
+  vol2=2 ^ (slider3/6);
+  vol3=2 ^ (slider4/6);
+  vol4=2 ^ (slider5/6);
+  vol5=2 ^ (slider6/6);
+  vol6=2 ^ (slider7/6);
+  vol7=2 ^ (slider8/6);
+  vol8=2 ^ (slider9/6);
+  vol9=2 ^ (slider10/6);
+  vol10=2 ^ (slider11/6);
+  vol11=2 ^ (slider12/6);
+  vol12=2 ^ (slider13/6);
+  vol13=2 ^ (slider14/6);
+  vol14=2 ^ (slider15/6);
+  vol15=2 ^ (slider16/6);
+  vol16=2 ^ (slider17/6);
+  
+  adj1 = 2.0*$pi*slider1/srate;
+  adj2 = 2.0*$pi*slider1*2.0/srate;
+  adj3 = 2.0*$pi*slider1*3.0/srate;
+  adj4 = 2.0*$pi*slider1*4.0/srate;
+  adj5 = 2.0*$pi*slider1*5.0/srate;
+  adj6 = 2.0*$pi*slider1*6.0/srate;
+  adj7 = 2.0*$pi*slider1*7.0/srate;
+  adj8 = 2.0*$pi*slider1*8.0/srate;
+  adj9 = 2.0*$pi*slider1*9.0/srate;
+  adj10 = 2.0*$pi*slider1*10.0/srate;
+  adj11 = 2.0*$pi*slider1*11.0/srate;
+  adj12 = 2.0*$pi*slider1*12.0/srate;
+  adj13 = 2.0*$pi*slider1*13.0/srate;
+  adj14 = 2.0*$pi*slider1*14.0/srate;
+  adj15 = 2.0*$pi*slider1*15.0/srate;
+  adj16 = 2.0*$pi*slider1*16.0/srate;
+
+@sample
+  
+  tone1 = cos(pos1);
+  tone2 = cos(pos2);
+  tone3 = cos(pos3);
+  tone4 = cos(pos4);
+  tone5 = cos(pos5);
+  tone6 = cos(pos6);
+  tone7 = cos(pos7);
+  tone8 = cos(pos8);
+  tone9 = cos(pos9);
+  tone10 = cos(pos10);
+  tone11 = cos(pos11);
+  tone12 = cos(pos12);
+  tone13 = cos(pos13);
+  tone14 = cos(pos14);
+  tone15 = cos(pos15);
+  tone16 = cos(pos16);
+
+tone1 *= vol1;
+tone2 *= vol2;
+tone3 *= vol3;
+tone4 *= vol4;
+tone5 *= vol5;
+tone6 *= vol6;
+tone7 *= vol7;
+tone8 *= vol8;
+tone9 *= vol9;
+tone10 *= vol10;
+tone11 *= vol11;
+tone12 *= vol12;
+tone13 *= vol13;
+tone14 *= vol14;
+tone15 *= vol15;
+tone16 *= vol16;
+
+spl0 = tone1+tone2+tone3+tone4+tone5+tone6+tone7+tone8+tone9+tone10+tone11+tone12+tone13+tone14+tone15+tone16+spl0;
+spl1 = tone1+tone2+tone3+tone4+tone5+tone6+tone7+tone8+tone9+tone10+tone11+tone12+tone13+tone14+tone15+tone16+spl1;
+
+pos1 += adj1;
+(pos1 >= 2.0*$pi) ? pos1 -= 2.0*$pi;
+
+pos2 += adj2;
+(pos2 >= 2.0*$pi) ? pos2 -= 2.0*$pi;
+
+pos3 += adj3;
+(pos3 >= 2.0*$pi) ? pos3 -= 2.0*$pi;
+
+pos4 += adj4;
+(pos4 >= 2.0*$pi) ? pos4 -= 2.0*$pi;
+
+pos5 += adj5;
+(pos5 >= 2.0*$pi) ? pos5 -= 2.0*$pi;
+
+pos6 += adj6;
+(pos6 >= 2.0*$pi) ? pos6 -= 2.0*$pi;
+
+pos7 += adj7;
+(pos7 >= 2.0*$pi) ? pos7 -= 2.0*$pi;
+
+pos8 += adj8;
+(pos8 >= 2.0*$pi) ? pos8 -= 2.0*$pi;
+
+pos9 += adj9;
+(pos9 >= 2.0*$pi) ? pos9 -= 2.0*$pi;
+
+pos10 += adj10;
+(pos10 >= 2.0*$pi) ? pos10 -= 2.0*$pi;
+
+pos11 += adj11;
+(pos11 >= 2.0*$pi) ? pos11 -= 2.0*$pi;
+
+pos12 += adj12;
+(pos12 >= 2.0*$pi) ? pos12 -= 2.0*$pi;
+
+pos13 += adj13;
+(pos13 >= 2.0*$pi) ? pos13 -= 2.0*$pi;
+
+pos14 += adj14;
+(pos14 >= 2.0*$pi) ? pos14 -= 2.0*$pi;
+
+pos15 += adj15;
+(pos15 >= 2.0*$pi) ? pos15 -= 2.0*$pi;
+
+pos16 += adj16;
+(pos16 >= 2.0*$pi) ? pos16 -= 2.0*$pi;
