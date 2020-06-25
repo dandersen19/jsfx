@@ -3,6 +3,8 @@ A collection of JSFX synthesis effects for Cockos Reaper. Mostly useful as open-
 
 For more information, see http://www.drakeandersen.com/research
 
+(c) 2020 by Drake Andersen
+
 ## Install
 ```
 1. Download JSFX plug-ins as text files.
