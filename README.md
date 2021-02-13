@@ -1,7 +1,7 @@
 # JSFX effects
-A collection of JSFX synthesis effects for Cockos Reaper. Mostly useful as open-access teaching tools.
+A collection of JSFX synthesis effects for Cockos Reaper. Mostly useful as teaching tools.
 
-For more information, see http://www.drakeandersen.com/research
+For more information, see https://drakeandersen.com/research
 
 (c) 2020 by Drake Andersen
 
